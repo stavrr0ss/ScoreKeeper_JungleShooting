@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ScoreKeeper_JungleShooting</string>
+    <string name="resetButton">New Game</string>
+    <string name="hitPoints">100</string>
+    <string name="button1_bazooka">useBazookaOnSly</string>
+    <string name="button2_grenade">useGrenadeOnSly</string>
+    <string name="button3_uranium">useUraniumOnSly</string>
+    <string name="button4_medkit">useMedkitOnArnie</string>
+    <string name="button5_bazooka">useBazookaOnArnie</string>
+    <string name="button6_grenade">useGrenadeOnArnie</string>
+    <string name="button7_uranium">useUraniumOnArnie</string>
+    <string name="button8_medkit">useMedkitOnSly</string>
+
+</resources>

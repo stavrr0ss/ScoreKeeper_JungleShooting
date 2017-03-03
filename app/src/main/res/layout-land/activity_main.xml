@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.example.android.scorekeeper_jungleshooting.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/jungle"
+        tools:ignore="ContentDescription" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:progress="@android:integer/status_bar_notification_info_maxnum"
+                android:progressTint="@color/progressBarColor"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/hp_playerOne"
+                style="@style/textViewLandscape"
+                android:fontFamily="sans-serif-light"
+                android:text=" " />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/arnie_classic"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+                <ImageButton
+                    android:id="@+id/button1"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="@string/button1_bazooka"
+                    android:onClick="useBazookaOnSly"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bazooka"
+
+                    />
+
+                <ImageButton
+                    android:id="@+id/button2"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="@string/button2_grenade"
+                    android:onClick="useGrenadeOnSly"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bomb"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/button3"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="@string/button3_uranium"
+                    android:onClick="useUraniumOnSly"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/uranium"
+
+                    />
+
+                <ImageButton
+                    android:id="@+id/button7"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="@string/button4_medkit"
+                    android:onClick="useMedKitonArnie"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/med_kit"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:progress="@android:integer/status_bar_notification_info_maxnum"
+                android:progressTint="@color/progressBarColor"
+                tools:visibility="visible" />
+
+            <TextView
+
+                android:id="@+id/hp_playerTwo"
+                style="@style/textViewLandscape"
+                android:fontFamily="sans-serif-light"
+                android:text=" " />
+
+            <ImageView
+                style="@style/PlayerImage"
+                android:layout_height="125dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerInside"
+                android:src="@drawable/sly_classic"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+                <ImageButton
+                    android:id="@+id/button4"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="@string/button5_bazooka"
+                    android:onClick="useBazookaOnArnie"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bazooka" />
+
+                <ImageButton
+                    android:id="@+id/button5"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="@string/button6_grenade"
+                    android:onClick="useGrenadeOnArnie"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bomb" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+                <ImageButton
+                    android:id="@+id/button6"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="@string/button7_uranium"
+                    android:onClick="useUraniumOnArnie"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/uranium" />
+
+                <ImageButton
+                    android:id="@+id/button8"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:background="@android:color/holo_green_light"
+                    android:contentDescription="@string/button8_medkit"
+                    android:onClick="useMedKitOnSly"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/med_kit" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        style="@style/ResetButtonLandscape"
+        android:onClick="resetScore"
+        android:text="@string/resetButton" />
+
+</RelativeLayout>
+
