@@ -41,16 +41,15 @@
                 android:id="@+id/hp_playerOne"
                 style="@style/textView"
                 android:fontFamily="sans-serif-light"
-                android:text=" " />
+                android:text="@string/hitPoints" />
 
             <ImageView
+                android:adjustViewBounds="true"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_marginBottom="16dp"
                 android:gravity="center_horizontal"
                 android:src="@drawable/arnie_classic"
                 tools:ignore="ContentDescription" />
-
 
             <ImageButton
                 android:id="@+id/button1"
@@ -88,7 +87,6 @@
 
                 />
 
-
         </LinearLayout>
 
         <View
@@ -120,10 +118,11 @@
                 android:id="@+id/hp_playerTwo"
                 style="@style/textView"
                 android:fontFamily="sans-serif-light"
-                android:text=" " />
+                android:text="@string/hitPoints" />
 
             <ImageView
                 style="@style/PlayerImage"
+                android:adjustViewBounds="true"
                 android:src="@drawable/sly_classic"
                 tools:ignore="ContentDescription" />
 

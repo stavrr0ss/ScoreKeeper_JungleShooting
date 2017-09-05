@@ -27,24 +27,29 @@ public class MainActivity extends AppCompatActivity {
         // Save the user's current game state
         savedInstanceState.putInt(hpPlayerOne, hpArnie);
         savedInstanceState.putInt(hpPlayerTwo, hpSly);
+        savedInstanceState.putInt("progress1", progressBar.getProgress());
+        savedInstanceState.putInt("progress2", progressBar2.getProgress());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
-
-        if (savedInstanceState != null) {
-            hpArnie = savedInstanceState.getInt(hpPlayerOne);
-            hpSly = savedInstanceState.getInt(hpPlayerTwo);
-        }
-        displayHpArnie(hpArnie);
-        displayHpSly(hpSly);
-
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(hpSly);
         progressBar2 = (ProgressBar) findViewById(R.id.progressBar2);
         progressBar2.setMax(hpArnie);
+
+        if (savedInstanceState != null) {
+            hpArnie = savedInstanceState.getInt(hpPlayerOne);
+            hpSly = savedInstanceState.getInt(hpPlayerTwo);
+            progressBar.setProgress(savedInstanceState.getInt("progress1"));
+            progressBar2.setProgress(savedInstanceState.getInt("progress2"));
+        }
+        displayHpArnie(hpArnie);
+        displayHpSly(hpSly);
+
+
     }
 
 
@@ -53,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
     public void useBazookaOnSly(View view) {
         hpSly = hpSly - bazooka;
         progressBar.incrementProgressBy(-bazooka);
+        if (hpSly < 0) {
+            hpSly = 0;
+            Toast arnieIsWinner = Toast.makeText(getApplicationContext(), "ARNIE Winns the round !!!", Toast.LENGTH_SHORT);
+            arnieIsWinner.show();
+        }
         displayHpSly(hpSly);
     }
 
@@ -62,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
     public void useGrenadeOnSly(View view) {
         hpSly = hpSly - grenade;
         progressBar.incrementProgressBy(-grenade);
+        if (hpSly < 0) {
+            hpSly = 0;
+            Toast arnieIsWinner = Toast.makeText(getApplicationContext(), "ARNIE Winns the round !!!", Toast.LENGTH_SHORT);
+            arnieIsWinner.show();
+        }
         displayHpSly(hpSly);
     }
 
@@ -72,6 +87,16 @@ public class MainActivity extends AppCompatActivity {
         hpArnie = hpArnie - grenade;
         progressBar.incrementProgressBy(-uranium);
         progressBar2.incrementProgressBy(-grenade);
+        if (hpSly < 0) {
+            hpSly = 0;
+            Toast arnieIsWinner = Toast.makeText(getApplicationContext(), "ARNIE Winns the round !!!", Toast.LENGTH_SHORT);
+            arnieIsWinner.show();
+        }
+        if (hpArnie < 0) {
+            hpArnie = 0;
+            Toast slyIsWinner = Toast.makeText(getApplicationContext(), "SLY Winns the round !!!", Toast.LENGTH_SHORT);
+            slyIsWinner.show();
+        }
         displayHpSly(hpSly);
         displayHpArnie(hpArnie);
     }
@@ -80,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
     public void useMedKitonArnie(View view) {
         hpArnie = hpArnie + medkit;
         progressBar2.incrementProgressBy(medkit);
+        if (hpArnie > 100) {
+            hpArnie = 100;
+            Toast maximumHealth = Toast.makeText(getApplicationContext(), "Maximum health reached !!!", Toast.LENGTH_SHORT);
+            maximumHealth.show();
+        }
         displayHpArnie(hpArnie);
     }
 
@@ -88,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
     public void useBazookaOnArnie(View view) {
         hpArnie = hpArnie - bazooka;
         progressBar2.incrementProgressBy(-bazooka);
+        if (hpArnie < 0) {
+            hpArnie = 0;
+            Toast slyIsWinner = Toast.makeText(getApplicationContext(), "SLY Winns the round !!!", Toast.LENGTH_SHORT);
+            slyIsWinner.show();
+        }
         displayHpArnie(hpArnie);
     }
     //*This is the value for button 6, decrease Hp with 5 points to player1
@@ -95,6 +130,11 @@ public class MainActivity extends AppCompatActivity {
     public void useGrenadeOnArnie(View view) {
         hpArnie = hpArnie - grenade;
         progressBar2.incrementProgressBy(-grenade);
+        if (hpArnie < 0) {
+            hpArnie = 0;
+            Toast slyIsWinner = Toast.makeText(getApplicationContext(), "SLY Winns the round !!!", Toast.LENGTH_SHORT);
+            slyIsWinner.show();
+        }
         displayHpArnie(hpArnie);
     }
     //* This is the value for button 7, decreases Hp with 10 points to player1 and 5 points to player2
@@ -104,6 +144,16 @@ public class MainActivity extends AppCompatActivity {
         hpSly = hpSly - grenade;
         progressBar2.incrementProgressBy(-uranium);
         progressBar.incrementProgressBy(-grenade);
+        if (hpArnie < 0) {
+            hpArnie = 0;
+            Toast slyIsWinner = Toast.makeText(getApplicationContext(), "SLY Winns the round !!!", Toast.LENGTH_SHORT);
+            slyIsWinner.show();
+        }
+        if (hpSly < 0) {
+            hpSly = 0;
+            Toast arnieIsWinner = Toast.makeText(getApplicationContext(), "ARNIE Winns the round !!!", Toast.LENGTH_SHORT);
+            arnieIsWinner.show();
+        }
         displayHpArnie(hpArnie);
         displayHpSly(hpSly);
     }
@@ -112,6 +162,11 @@ public class MainActivity extends AppCompatActivity {
     public void useMedKitOnSly(View view) {
         hpSly = hpSly + medkit;
         progressBar.incrementProgressBy(medkit);
+        if (hpSly > 100) {
+            hpSly = 100;
+            Toast maximumHealth = Toast.makeText(getApplicationContext(), "Maximum health reached !!!", Toast.LENGTH_SHORT);
+            maximumHealth.show();
+        }
         displayHpSly(hpSly);
     }
 
@@ -130,17 +185,6 @@ public class MainActivity extends AppCompatActivity {
      * Displays the hitpoints for player one ( Arnie ) .
      */
     private void displayHpArnie(int score) {
-        if (hpArnie < 0) {
-            Toast slyIsWinner = Toast.makeText(getApplicationContext(), "SLY Winns the round !!!", Toast.LENGTH_SHORT);
-            slyIsWinner.show();
-            return;
-        }
-        if (hpArnie > 100) {
-            Toast maximumHealth = Toast.makeText(getApplicationContext(), "Maximum health reached !!!", Toast.LENGTH_SHORT);
-            maximumHealth.show();
-            return;
-        }
-
         TextView scoreView = (TextView) findViewById(hp_playerOne);
         scoreView.setText(String.valueOf(score));
     }
@@ -149,16 +193,6 @@ public class MainActivity extends AppCompatActivity {
      * Displays the hitpoints for player two ( Sly ) .
      */
     private void displayHpSly(int score) {
-        if (hpSly < 0) {
-            Toast arnieIsWinner = Toast.makeText(getApplicationContext(), "ARNIE Winns the round !!!", Toast.LENGTH_SHORT);
-            arnieIsWinner.show();
-            return;
-        }
-        if (hpSly > 100) {
-            Toast maximumHealth = Toast.makeText(getApplicationContext(), "Maximum health reached !!!", Toast.LENGTH_SHORT);
-            maximumHealth.show();
-            return;
-        }
         TextView scoreView = (TextView) findViewById(hp_playerTwo);
         scoreView.setText(String.valueOf(score));
     }
